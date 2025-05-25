@@ -1,12 +1,6 @@
-import os
-from sqlalchemy import create_engine, MetaData
-from databases import Database
-from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-database = Database(DATABASE_URL)
+DATABASE_URL = "postgresql://postgres:WbnS5utrc1Gayg35@db.olzrkkjzqltovkvxeggb.supabase.co:5432/postgres"
 engine = create_engine(DATABASE_URL)
-metadata = MetaData() 
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
